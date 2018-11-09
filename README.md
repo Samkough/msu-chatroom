@@ -1,2 +1,2 @@
-# msu-chatroom
-Creating a chatroom that can handle multiple clients for my final group project in CSIT340 - Computer Networks.
+# MSU ChatRoom
+Creating a chatroom that can handle multiple clients for my final group project in CSIT340 - Computer Networks, taken at Montclair State University.
