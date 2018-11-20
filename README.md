@@ -16,3 +16,4 @@ Python 2 multithreading:
 
 Python 3 multithreading:
 * https://www.tutorialspoint.com/python3/python_multithreading.htm
+* https://www.geeksforgeeks.org/simple-chat-room-using-python/
