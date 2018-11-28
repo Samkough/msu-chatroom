@@ -1,15 +1,24 @@
-from socket import *
+#!/usr/bin/env python3
+from socket import AF_INET, socket, SOCK_STREAM
+from threading import Thread
 
-serverName = 'localhost'
-serverPort = 5000
-clientSocket = socket(AF_INET, SOCK_DGRAM)
-message = ""
+host = input('Enter host: ')
+port = input('Enter port: ')
 
-while message != "quit":
-    message = input("Input a lowercase sentence: ")
-    clientSocket.sendto(message.encode(), (serverName, serverPort))
-    modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
-    print(modifiedMessage.decode())
+address = (HOST, PORT)
 
-print("Client is closed. Bye!")
-clientSocket.close()
+client_socket = socket(AF_INET, SOCK_STREAM)
+client_socket.connect(ADDR)
+
+receive_thread = Thread(target = receive)
+receive_thread.start()
+
+def receive():
+    # receiving message from server
+
+def send():
+    # send message to server
+
+
+def quit(event=None):
+    # quitting
