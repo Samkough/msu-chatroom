@@ -1,3 +1,4 @@
+# Simple UDP Client
 from socket import *
 
 serverName = 'localhost'
