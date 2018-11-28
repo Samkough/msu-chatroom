@@ -19,6 +19,5 @@ def receive():
 def send():
     # send message to server
 
-
 def quit(event=None):
     # quitting
