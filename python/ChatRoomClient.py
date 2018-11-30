@@ -2,13 +2,13 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 
-host = input('Enter host: ')
-port = input('Enter port: ')
+host = input('Host: ')
+port = input('Port: ')
 
-address = (HOST, PORT)
+address = (host, port)
 
 client_socket = socket(AF_INET, SOCK_STREAM)
-client_socket.connect(ADDR)
+client_socket.connect(address)
 
 receive_thread = Thread(target = receive)
 receive_thread.start()

@@ -3,7 +3,7 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 
 clients = {}
-addresses = {}
+client_addresses = {}
 
 host = ''
 port = 33000
