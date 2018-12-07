@@ -1,5 +1,6 @@
 from socket import *
 from threading import Thread
+import random
 
 def receive():
     while True:
@@ -10,7 +11,7 @@ def receive():
             break
 
 serverName = 'localhost'
-serverPort = 5000
+serverPort = random.randrange(1024, 65535)
 clientSocket = socket(AF_INET, SOCK_DGRAM)
 
 print("Starting up the client...")
@@ -24,7 +25,7 @@ while True:
     clientSocket.sendto(msg.encode(), (serverName, serverPort))
     if msg == "quit":
         False
-
+        
 receive_thread.join() # keeps the thread going
 clientSocket.close()
 exit()

@@ -22,13 +22,13 @@ while True:
 
     if msg == "join":
         print("JOIN")
-        addrs.append(ip)
-        print(addrs)
-        broadcast(prefix + " joined!")
+        addrs.append(clientAddr)
+        print(clientAddr)
+        broadcast(prefix + "joined!")
     elif msg == "quit":
         print("QUIT")
-        del addrs[ip]   
-        broadcast(prefix + " quit!")
+        del addrs[clientAddr]   
+        broadcast(prefix + "quit!")
     else:
         print("OTHER")
         broadcast(prefix + msg)
