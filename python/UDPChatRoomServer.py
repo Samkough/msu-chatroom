@@ -1,15 +1,15 @@
 from socket import *
 
-clients = list()
 serverPort = 5000
 serverSocket = socket(AF_INET, SOCK_DGRAM)
 serverSocket.bind(('', serverPort))
+clients = list()
+
 print("Server started on port " + str(serverPort) + "...")
 
 def broadcast(msg):
     for sock in clients:
         serverSocket.sendto(msg.encode(), sock)
-        print(sock) # testing to see all sockets
 
 while True:
     msg, clientAddr = serverSocket.recvfrom(2048)
@@ -17,27 +17,25 @@ while True:
 
     ip = clientAddr[0]
     port = clientAddr[1]
-    prefix = str(ip) + ":" + str(port) + ": "
+    prefix = str(ip) + ":" + str(port) + ":"
+    prefix_no_colon = str(ip) + ":" + str(port)
 
     if msg == "join":
-        print("JOIN")
-        
         cond = 0
-        for client in clients:
-            if clientAddr == client:
+        for sock in clients:
+            if clientAddr == sock:
                 cond = 1
+
         if cond == 0:
-            print("Not duplicate")
+            print(prefix_no_colon + " joined the MSU Chatroom!")
+            broadcast(prefix_no_colon + " joined the MSU Chatroom!")
             clients.append(clientAddr)
         else:
-            print("Duplicate")
-            
-        # print(clientAddr)
-        broadcast(prefix + "joined!")
+            print(prefix_no_colon + " is a duplicate!")
+            broadcast(prefix_no_colon + " is a duplicate!")
     elif msg == "{quit}":
-        print("QUIT")
-        del clients[clientAddr]
-        broadcast(prefix + " quit!")
+        clients.remove(clientAddr)
+        print("Clients left: ", clients)
+        broadcast(prefix_no_colon + " quit!")
     else:
-        print("OTHER")
-        broadcast(prefix + msg)
+        broadcast(prefix + " " + msg)
