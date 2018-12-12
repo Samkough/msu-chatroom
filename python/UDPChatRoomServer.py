@@ -1,16 +1,15 @@
 from socket import *
 
 clients = list()
-addrs = list()
-
 serverPort = 5000
 serverSocket = socket(AF_INET, SOCK_DGRAM)
 serverSocket.bind(('', serverPort))
 print("Server started on port " + str(serverPort) + "...")
 
 def broadcast(msg):
-    for sock in addrs:
-        serverSocket.sendto(msg.encode(), (ip, port))
+    for sock in clients:
+        serverSocket.sendto(msg.encode(), sock)
+        print(sock) # testing to see all sockets
 
 while True:
     msg, clientAddr = serverSocket.recvfrom(2048)
@@ -22,13 +21,23 @@ while True:
 
     if msg == "join":
         print("JOIN")
-        addrs.append(clientAddr)
-        print(clientAddr)
+        
+        cond = 0
+        for client in clients:
+            if clientAddr == client:
+                cond = 1
+        if cond == 0:
+            print("Not duplicate")
+            clients.append(clientAddr)
+        else:
+            print("Duplicate")
+            
+        # print(clientAddr)
         broadcast(prefix + "joined!")
-    elif msg == "quit":
+    elif msg == "{quit}":
         print("QUIT")
-        del addrs[clientAddr]   
-        broadcast(prefix + "quit!")
+        del clients[clientAddr]
+        broadcast(prefix + " quit!")
     else:
         print("OTHER")
         broadcast(prefix + msg)
