@@ -5,6 +5,14 @@ Creating a chatroom that can handle multiple clients for my final group project.
 * Python 3.5+ (haven't tried w/ anything lower than 3.5)
 * Java
 
+## Objectives
+* UDP Python Server (<span style="color:green">complete</span>)
+* UDP Python Server (<span style="color:green">complete</span>)
+* TCP Python Server (<span style="color:red">incomplete</span>)
+* TCP Python Server (<span style="color:red">incomplete</span>)
+* UDP Java Server (<span style="color:red">incomplete</span>)
+* UDP Java Server (<span style="color:red">incomplete</span>)
+
 ## Resources
 Java multithreading:
 * https://www.tutorialspoint.com/java/java_multithreading.htm
