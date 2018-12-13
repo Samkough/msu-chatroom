@@ -17,10 +17,11 @@ while True:
     msg, clientAddr = serverSocket.recvfrom(2048)
     msg = msg.decode()
 
-    ip = clientAddr[0]
-    port = clientAddr[1]
-    prefix = str(ip) + ":" + str(port) + ":"
-    prefix_no_colon = str(ip) + ":" + str(port)
+    ip = str(clientAddr[0])
+    port = str(clientAddr[1])
+    name = ip + ":" + port
+    prefix = ip + ":" + port + ":"
+    prefix_no_colon = ip + ":" + port
 
     if msg == "join":
         cond = 0
@@ -31,6 +32,8 @@ while True:
         if cond == 0:
             broadcast(prefix_no_colon, " joined the MSU Chatroom!")
             clients.append(clientAddr)
+            welc_msg = "Welcome to the server " + str(name) + "!"
+            serverSocket.sendto(welc_msg.encode(), clientAddr)
         else:
             broadcast(prefix_no_colon, "is a duplicate!")
     elif msg == "{quit}":
