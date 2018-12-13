@@ -1,6 +1,5 @@
 from socket import *
 from threading import Thread
-import random
 
 serverName = 'localhost'
 serverPort = 5000
@@ -33,20 +32,10 @@ if __name__ == "__main__":
     receive_thread = Thread(target=receive)
     receive_thread.start()
 
-    print("receive_thread started\n")
-    
     send_thread = Thread(target=send)
     send_thread.start()
 
-    print("send_thread started\n")
-
-print("receive_thread join starts\n")
 receive_thread.join()
-print("receive_thread join ends")
-
-print("send_thread join starts")
 send_thread.join()
-print("send_thread join ends")
-
 clientSocket.close()
 exit()

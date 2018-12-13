@@ -7,9 +7,11 @@ clients = list()
 
 print("Server started on port " + str(serverPort) + "...")
 
-def broadcast(msg):
+def broadcast(prefix, msg):
+    full_msg = prefix + " " + msg
+    print(full_msg)
     for sock in clients:
-        serverSocket.sendto(msg.encode(), sock)
+        serverSocket.sendto(full_msg.encode(), sock)
 
 while True:
     msg, clientAddr = serverSocket.recvfrom(2048)
@@ -27,15 +29,13 @@ while True:
                 cond = 1
 
         if cond == 0:
-            print(prefix_no_colon + " joined the MSU Chatroom!")
-            broadcast(prefix_no_colon + " joined the MSU Chatroom!")
+            broadcast(prefix_no_colon, " joined the MSU Chatroom!")
             clients.append(clientAddr)
         else:
-            print(prefix_no_colon + " is a duplicate!")
-            broadcast(prefix_no_colon + " is a duplicate!")
+            broadcast(prefix_no_colon, "is a duplicate!")
     elif msg == "{quit}":
         clients.remove(clientAddr)
         print("Clients left: ", clients)
-        broadcast(prefix_no_colon + " quit!")
+        broadcast(prefix_no_colon, "quit!")
     else:
-        broadcast(prefix + " " + msg)
+        broadcast(prefix, msg)
