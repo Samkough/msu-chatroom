@@ -6,12 +6,12 @@ Creating a chatroom that can handle multiple clients for my final group project.
 * Java
 
 ## Objectives
-* UDP Python Server (<span style="color:green">complete</span>)
-* UDP Python Server (<span style="color:green">complete</span>)
-* TCP Python Server (<span style="color:red">incomplete</span>)
-* TCP Python Server (<span style="color:red">incomplete</span>)
-* UDP Java Server (<span style="color:red">incomplete</span>)
-* UDP Java Server (<span style="color:red">incomplete</span>)
+* :heavy_check_mark: UDP Python Server
+* :heavy_check_mark: UDP Python Server
+* :x: TCP Python Server
+* :x: TCP Python Server
+* :x: UDP Java Server
+* :x: UDP Java Server
 
 ## Resources
 Java multithreading:
