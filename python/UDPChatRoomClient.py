@@ -16,14 +16,14 @@ def receive():
             break
 
 def send():
-    runnings  = True
-    while runnings:
+    running  = True
+    while running:
         try:
             msg = input("")
             clientSocket.sendto(msg.encode(), serverSocket)
             if msg == "{quit}":
                 clientSocket.close()
-                runnings = False
+                running = False
         except KeyboardInterrupt:
             break
 
